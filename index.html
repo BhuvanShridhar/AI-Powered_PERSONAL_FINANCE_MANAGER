@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+</head>
+<body>
+    <h1>Personal Finance Tracker</h1>
+    <form id="expenseForm">
+        <input type="number" id="expense" placeholder="Expense Amount" required />
+        <input type="text" id="category" placeholder="Category" required />
+        <button type="submit">Add Expense</button>
+    </form>
+
+    <script>
+        document.getElementById('expenseForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const expense = document.getElementById('expense').value;
+            const category = document.getElementById('category').value;
+
+            const response = await fetch('/api/expense', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ expense, category })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+    </script>
+</body>
+</html>
