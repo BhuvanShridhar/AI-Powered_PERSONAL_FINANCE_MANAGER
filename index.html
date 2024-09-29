@@ -3,404 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Finance Tracker with Google Pay</title>
-
-    <!-- Fonts and Icons -->
+    <meta name="description" content="AI Powered Personal Finance Manager">
+    <title>Personal Finance Tracker</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
     <style>
-        :root {
-            --primary-color: #2a5298;
-            --secondary-color: #1e3c72;
-            --accent-color: #FFD700;
-            --light-bg: #fff;
-            --dark-bg: #121212;
-            --text-light: #fff;
-            --text-dark: #333;
-        }
-
-        * {
+        /* General Styling */
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Roboto', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #D3CCE3, #E9E4F0); /* New Background Gradient */
         }
 
         .container {
-            width: 90%;
-            max-width: 1300px;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            text-transform: uppercase;
-        }
-
-        .card-container,
-        .form-container {
+        .header {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
-        .card,
-        .form-item {
-            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
-            border-radius: 10px;
-            padding: 25px;
-            width: 30%;
-            margin: 10px;
-            color: var(--text-light);
-            position: relative;
-            transition: transform 0.3s ease;
+        .header h1 {
+            color: #007BFF; /* Darker blue for header */
         }
 
-        .card:hover,
-        .form-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-title,
-        .form-item label {
-            font-size: 1.3rem;
+        .user-section {
+            color: #007BFF;
             font-weight: 500;
-            margin-bottom: 15px;
         }
 
-        .card-value {
-            font-size: 2.8rem;
-            font-weight: 700;
+        /* Dashboard Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* Space between grid items */
         }
 
-        .button {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        /* Overview Cards */
+        .card {
+            background: #007BFF; /* New Blue Color for Cards */
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease-in-out;
         }
 
-        .button:hover {
-            transform: scale(1.05);
+        .card:hover {
+            transform: translateY(-5px);
         }
 
-        .form-item input {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            width: 100%;
-            margin-bottom: 10px;
+        .card h2 {
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Form Section */
+        .form-section {
+            margin-top: 20px; /* Spacing for forms */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container, .goal-container {
+            background: #E8F0FE; /* Light blue for forms */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin-right: 10px; /* Spacing between forms */
         }
 
         .goal-container {
-            text-align: center;
-            margin-top: 30px;
+            margin-right: 0; /* Remove right margin for the last form */
         }
 
-        .goal-container span {
-            font-size: 1.5rem;
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        button {
+            background: #3b5998; /* Button color */
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2a4277; /* Darker shade on hover */
+        }
+
+        /* Charts Section */
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; /* Space between charts */
+            margin-top: 20px; /* Margin for charts */
         }
 
         .chart-container {
+            padding: 20px;
+            background: #ffffff; /* White background for charts */
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container h2 {
             text-align: center;
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 15px;
+            color: #007BFF; /* Title color */
+            margin: 0;
         }
 
-        .chart-wrapper {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .small-chart {
-            height: 200px;
-        }
-
-        @media (max-width: 992px) {
-            .card,
-            .form-item {
-                width: 45%;
-            }
-
-            .chart-wrapper {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card,
-            .form-item {
-                width: 100%;
-            }
-        }
-
-        #loginPage {
-            display: block;
-        }
-
-        #dashboard {
-            display: none;
-        }
-
-        #loginMessage {
-            color: #d9534f;
-            text-align: center;
+        /* Reduced Chart Size */
+        canvas {
+            max-height: 180px; /* Reduced height for charts */
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
 </head>
 <body>
-    <div class="container" id="loginPage">
-        <h1>Login</h1>
-        <form id="loginForm" style="display: flex; flex-direction: column; align-items: center;">
-            <input type="text" id="username" placeholder="Username" required />
-            <input type="password" id="password" placeholder="Password" required />
-            <button type="submit" class="button">Login</button>
-        </form>
-        <p id="loginMessage"></p>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Personal Finance Dashboard</h1>
+            <div class="user-section">
+                <span>Welcome, User!</span>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Content -->
+        <div class="dashboard">
+            <!-- Overview Cards -->
+            <div class="card" id="income-card">
+                <h2>Total Income</h2>
+                <p id="total-income">₹0</p>
+            </div>
+            <div class="card" id="expense-card">
+                <h2>Total Expenses</h2>
+                <p id="total-expense">₹0</p>
+            </div>
+            <div class="card" id="balance-card">
+                <h2>Net Balance</h2>
+                <p id="net-balance">₹0</p>
+            </div>
+        </div>
+
+        <!-- Goal and Expense Forms -->
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Add Income / Expense</h2>
+                <form id="finance-form">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="Enter amount" required>
+
+                    <label for="type">Type:</label>
+                    <select id="type">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="Salary">Salary</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </div>
+
+            <div class="goal-container">
+                <h2>Set Savings Goal</h2>
+                <form id="goal-form">
+                    <label for="goal">Savings Goal:</label>
+                    <input type="number" id="goal" placeholder="Enter your savings goal" required>
+                    <button type="submit">Set Goal</button>
+                </form>
+                <p id="goal-progress">Goal Progress: 0%</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <section class="charts">
+            <div class="chart-container">
+                <h2>Income vs. Expenses</h2>
+                <canvas id="incomeExpenseChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Category-wise Expense Distribution</h2>
+                <canvas id="expensePieChart"></canvas>
+            </div>
+        </section>
     </div>
 
-    <div class="container" id="dashboard">
-        <h1>Personal Finance Dashboard</h1>
-
-        <!-- Cards Section -->
-        <div class="card-container">
-            <div class="card">
-                <i class="fas fa-wallet"></i>
-                <div class="card-title">Total Expenses</div>
-                <div class="card-value" id="total-expense">$0</div>
-            </div>
-            <div class="card">
-                <i class="fas fa-coins"></i>
-                <div class="card-title">Total Income</div>
-                <div class="card-value" id="total-income">$0</div>
-            </div>
-            <div class="card">
-                <i class="fas fa-dollar-sign"></i>
-                <div class="card-title">Balance</div>
-                <div class="card-value" id="balance">$0</div>
-            </div>
-        </div>
-
-        <!-- Forms Section -->
-        <div class="form-container">
-            <div class="form-item">
-                <label for="expense-amount">Add Expense</label>
-                <input type="number" id="expense-amount" placeholder="Expense amount">
-                <button class="button" id="add-expense-btn">Add Expense</button>
-            </div>
-            <div class="form-item">
-                <label for="income-amount">Add Income</label>
-                <input type="number" id="income-amount" placeholder="Income amount">
-                <button class="button" id="add-income-btn">Add Income</button>
-            </div>
-            <div class="form-item">
-                <label for="goal">Set Savings Goal</label>
-                <input type="number" id="goal" placeholder="Enter your savings goal">
-                <button class="button" id="add-goal-btn">Set Goal</button>
-            </div>
-        </div>
-
-        <!-- Goal Section -->
-        <div class="goal-container">
-            <h2>Goal Progress</h2>
-            <span>Goal: <span id="goal-amount">$0</span></span><br>
-            <span>Progress: <span id="goal-progress">0%</span></span>
-        </div>
-
-        <!-- Google Pay Section -->
-        <div class="form-item" id="google-pay-button" style="text-align: center; margin-top: 20px;"></div>
-
-        <!-- Small Pie Chart Section -->
-        <div class="chart-container">
-            <h3>Income vs. Expenses</h3>
-            <div class="chart-wrapper">
-                <canvas id="financePieChart" class="small-chart"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://pay.google.com/gp/p/js/pay.js" async></script>
     <script>
-        let expenses = [];
-        let income = [];
-        let goal = 0;
-        let financePieChart;
+        let totalIncome = 0;
+        let totalExpenses = 0;
+        let savingsGoal = 0;
 
-        // Google Pay setup
-        function setupGooglePay() {
-            const paymentsClient = new google.payments.api.PaymentsClient({ environment: 'TEST' });
-            const button = paymentsClient.createButton({ onClick: onGooglePayButtonClicked });
-            document.getElementById('google-pay-button').appendChild(button);
-        }
+        // Initialize charts with reduced size
+        const incomeExpenseChart = new Chart(document.getElementById('incomeExpenseChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Total Income', 'Total Expenses'],
+                datasets: [{
+                    label: 'Amount (₹)',
+                    data: [totalIncome, totalExpenses],
+                    backgroundColor: ['#4CAF50', '#FF5252']
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
 
-        function onGooglePayButtonClicked() {
-            const paymentDataRequest = getPaymentDataRequest();
-            paymentsClient.loadPaymentData(paymentDataRequest)
-                .then(function (paymentData) {
-                    // Process the payment data here
-                    console.log(paymentData);
-                })
-                .catch(function (err) {
-                    console.error('Error loading payment data:', err);
-                });
-        }
+        const categoryLabels = ['Salary', 'Groceries', 'Rent', 'Entertainment'];
+        const expensePieChart = new Chart(document.getElementById('expensePieChart'), {
+            type: 'pie',
+            data: {
+                labels: categoryLabels,
+                datasets: [{
+                    label: 'Category Distribution',
+                    data: [0, 0, 0, 0],
+                    backgroundColor: ['#FFB74D', '#64B5F6', '#4DB6AC', '#F06292']
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
 
-        function getPaymentDataRequest() {
-            return {
-                apiVersion: 2,
-                apiVersionMinor: 0,
-                merchantId: 'YOUR_MERCHANT_ID', // Replace with your merchant ID
-                transactionInfo: {
-                    totalPriceStatus: 'FINAL',
-                    totalPrice: '10.00', // replace with dynamic value
-                    currencyCode: 'USD',
-                },
-                allowedPaymentMethods: [{
-                    type: 'CARD',
-                    tokenizationSpecification: {
-                        type: 'PAYMENT_GATEWAY',
-                        parameters: {
-                            gateway: 'example', // Replace with your payment gateway
-                            merchantId: 'exampleMerchantId' // Replace with your merchant ID
-                        }
-                    },
-                    parameters: {
-                        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-                        allowedCardNetworks: ['MASTERCARD', 'VISA'],
-                    },
-                }],
-            };
-        }
-
-        // Update financial data on the dashboard
-        function updateDashboard() {
-            const totalExpense = expenses.reduce((sum, expense) => sum + expense, 0);
-            const totalIncomeValue = income.reduce((sum, inc) => sum + inc, 0);
-            const balanceValue = totalIncomeValue - totalExpense;
-
-            document.getElementById('total-expense').innerText = `$${totalExpense}`;
-            document.getElementById('total-income').innerText = `$${totalIncomeValue}`;
-            document.getElementById('balance').innerText = `$${balanceValue}`;
-            document.getElementById('goal-amount').innerText = `$${goal}`;
-            updateGoalProgress();
-            updateChart();
-        }
-
-        function updateGoalProgress() {
-            const totalSavings = income.reduce((sum, inc) => sum + inc, 0) - expenses.reduce((sum, expense) => sum + expense, 0);
-            const progress = (totalSavings / goal) * 100;
-            document.getElementById('goal-progress').innerText = `${Math.min(Math.max(progress, 0), 100).toFixed(2)}%`;
-        }
-
-        function updateChart() {
-            const totalExpense = expenses.reduce((sum, expense) => sum + expense, 0);
-            const totalIncomeValue = income.reduce((sum, inc) => sum + inc, 0);
-
-            if (financePieChart) {
-                financePieChart.destroy();
-            }
-
-            const ctx = document.getElementById('financePieChart').getContext('2d');
-            financePieChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Income', 'Expenses'],
-                    datasets: [{
-                        data: [totalIncomeValue, totalExpense],
-                        backgroundColor: ['#36a2eb', '#ff6384'],
-                    }]
-                },
-                options: {
-                    responsive: true,
-                }
-            });
-        }
-
-        // Login Functionality
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
+        // Add event listener to the finance form
+        document.getElementById('finance-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+            const category = document.getElementById('category').value;
 
-            // Simulated login (replace with real authentication logic)
-            if (username === 'user' && password === 'pass') {
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
-                setupGooglePay();
-                updateDashboard();
+            if (!amount || amount <= 0) return alert('Please enter a valid amount.');
+
+            updateDashboard(amount, type);
+            updateChart(amount, type, category);
+            document.getElementById('finance-form').reset();
+        });
+
+        // Add event listener to the goal form
+        document.getElementById('goal-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const goalAmount = parseFloat(document.getElementById('goal').value);
+            if (!goalAmount || goalAmount <= 0) return alert('Please enter a valid goal.');
+            setGoal(goalAmount);
+            document.getElementById('goal-form').reset();
+        });
+
+        // Update dashboard values
+        function updateDashboard(amount, type) {
+            if (type === 'income') {
+                totalIncome += amount;
             } else {
-                document.getElementById('loginMessage').innerText = 'Invalid username or password';
+                totalExpenses += amount;
             }
-        });
 
-        // Add Expense
-        document.getElementById('add-expense-btn').addEventListener('click', function () {
-            const amount = parseFloat(document.getElementById('expense-amount').value);
-            if (!isNaN(amount)) {
-                expenses.push(amount);
-                updateDashboard();
+            const netBalance = totalIncome - totalExpenses;
+            document.getElementById('total-income').innerText = `₹${totalIncome}`;
+            document.getElementById('total-expense').innerText = `₹${totalExpenses}`;
+            document.getElementById('net-balance').innerText = `₹${netBalance}`;
+
+            updateGoalProgress(netBalance);
+        }
+
+        // Update goal and progress
+        function setGoal(goal) {
+            savingsGoal = goal;
+            document.getElementById('goal-progress').innerText = `Goal Progress: 0%`;
+        }
+
+        // Update goal progress
+        function updateGoalProgress(netBalance) {
+            if (savingsGoal > 0) {
+                const progress = Math.min(100, (netBalance / savingsGoal) * 100);
+                document.getElementById('goal-progress').innerText = `Goal Progress: ${progress.toFixed(2)}%`;
             }
-            document.getElementById('expense-amount').value = '';
-        });
+        }
 
-        // Add Income
-        document.getElementById('add-income-btn').addEventListener('click', function () {
-            const amount = parseFloat(document.getElementById('income-amount').value);
-            if (!isNaN(amount)) {
-                income.push(amount);
-                updateDashboard();
+        // Update charts
+        function updateChart(amount, type, category) {
+            // Update the income vs. expenses chart
+            incomeExpenseChart.data.datasets[0].data[0] = totalIncome; // Update Income
+            incomeExpenseChart.data.datasets[0].data[1] = totalExpenses; // Update Expenses
+            incomeExpenseChart.update();
+
+            // Update the category-wise expense pie chart
+            const categoryIndex = categoryLabels.indexOf(category);
+            if (categoryIndex >= 0) {
+                expensePieChart.data.datasets[0].data[categoryIndex] += amount;
             }
-            document.getElementById('income-amount').value = '';
-        });
-
-        // Set Savings Goal
-        document.getElementById('add-goal-btn').addEventListener('click', function () {
-            const amount = parseFloat(document.getElementById('goal').value);
-            if (!isNaN(amount)) {
-                goal = amount;
-                updateDashboard();
-            }
-            document.getElementById('goal').value = '';
-        });
-
-        // Initial Setup
-        window.onload = function () {
-            setupGooglePay();
-        };
-    </script>
-    <script>
-    window.embeddedChatbotConfig = {
+            expensePieChart.update();
+        }
+        window.embeddedChatbotConfig = {
     chatbotId: "rJXBO4PXa7Rzx9Q_gA-pW",
     domain: "www.chatbase.co"
     }
     </script>
-    
     <script
     src="https://www.chatbase.co/embed.min.js"
     chatbotId="rJXBO4PXa7Rzx9Q_gA-pW"
