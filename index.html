@@ -12,16 +12,73 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #D3CCE3, #E9E4F0); /* New Background Gradient */
+            background: linear-gradient(135deg, #667eea, #764ba2); /* Updated Background Gradient */
+            overflow-x: hidden; /* Avoid Horizontal Scroll */
         }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #42a5f5, #478ed1);
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .login-box button {
+            background: #42a5f5;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .login-box button:hover {
+            background: #3585c1;
+        }
+
 
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
-            background: #f5f5f5;
+            background: #ffffff;
             border-radius: 15px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .header {
@@ -29,10 +86,17 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .header h1 {
-            color: #007BFF; /* Darker blue for header */
+            color: #007BFF; 
+            font-size: 2.5rem; /* Larger header */
         }
 
         .user-section {
@@ -44,113 +108,143 @@
         .dashboard {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px; /* Space between grid items */
+            gap: 20px;
         }
 
         /* Overview Cards */
         .card {
-            background: #007BFF; /* New Blue Color for Cards */
+            background: linear-gradient(135deg, #42a5f5, #478ed1); /* New Gradient for Cards */
             color: white;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease-in-out;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            animation: bounceUp 1.2s ease-out;
+        }
+
+        @keyframes bounceUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            60% { opacity: 0.5; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4); /* Stronger hover shadow */
         }
 
         .card h2 {
             font-weight: 500;
             margin: 0;
+            font-size: 1.5rem;
         }
 
         .card p {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: bold;
         }
 
         /* Form Section */
         .form-section {
-            margin-top: 20px; /* Spacing for forms */
+            margin-top: 40px; /* More spacing for forms */
             display: flex;
             justify-content: space-between;
         }
 
         .form-container, .goal-container {
-            background: #E8F0FE; /* Light blue for forms */
+            background: #f3f7fd; /* Lighter blue for forms */
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
             flex: 1;
-            margin-right: 10px; /* Spacing between forms */
+            margin-right: 10px;
+            transition: box-shadow 0.3s;
+        }
+
+        .form-container:hover, .goal-container:hover {
+            box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2); /* Hover shadow effect */
         }
 
         .goal-container {
-            margin-right: 0; /* Remove right margin for the last form */
+            margin-right: 0;
         }
 
         label {
             display: block;
             margin-top: 10px;
             color: #333;
+            font-size: 1rem;
         }
 
         input, select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
             border: 1px solid #ddd;
             border-radius: 8px;
             background: #ffffff;
+            font-size: 1rem;
         }
 
         button {
-            background: #3b5998; /* Button color */
+            background: #42a5f5; /* New Button Gradient */
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             margin-top: 10px;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 1.2rem;
             width: 100%;
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            background: #2a4277; /* Darker shade on hover */
+            background: #3585c1; /* Darker hover effect */
         }
 
         /* Charts Section */
         .charts {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px; /* Space between charts */
-            margin-top: 20px; /* Margin for charts */
+            gap: 20px;
+            margin-top: 40px; /* More margin for charts */
         }
 
         .chart-container {
             padding: 20px;
-            background: #ffffff; /* White background for charts */
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 15px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
         }
 
         .chart-container h2 {
             text-align: center;
-            color: #007BFF; /* Title color */
-            margin: 0;
+            color: #007BFF;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
 
-        /* Reduced Chart Size */
         canvas {
-            max-height: 180px; /* Reduced height for charts */
+            max-height: 200px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
 </head>
 <body>
+
+    <div class="login-container" id="login-container">
+        <div class="login-box">
+            <h2>Login to Your Account</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <p id="login-error" style="color: red; display: none;">Invalid credentials. Try again.</p>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header Section -->
         <header class="header">
@@ -162,7 +256,6 @@
 
         <!-- Main Dashboard Content -->
         <div class="dashboard">
-            <!-- Overview Cards -->
             <div class="card" id="income-card">
                 <h2>Total Income</h2>
                 <p id="total-income">₹0</p>
@@ -218,126 +311,145 @@
         <!-- Charts Section -->
         <section class="charts">
             <div class="chart-container">
-                <h2>Income vs. Expenses</h2>
+                <h2>Income vs Expenses</h2>
                 <canvas id="incomeExpenseChart"></canvas>
             </div>
             <div class="chart-container">
-                <h2>Category-wise Expense Distribution</h2>
+                <h2>Expense by Category</h2>
                 <canvas id="expensePieChart"></canvas>
             </div>
         </section>
     </div>
 
+    <!-- JavaScript for Dynamic Functionality -->
     <script>
-        let totalIncome = 0;
-        let totalExpenses = 0;
-        let savingsGoal = 0;
 
-        // Initialize charts with reduced size
-        const incomeExpenseChart = new Chart(document.getElementById('incomeExpenseChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Total Income', 'Total Expenses'],
-                datasets: [{
-                    label: 'Amount (₹)',
-                    data: [totalIncome, totalExpenses],
-                    backgroundColor: ['#4CAF50', '#FF5252']
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
+function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const validUsername = 'user';
+            const validPassword = 'pass';
 
-        const categoryLabels = ['Salary', 'Groceries', 'Rent', 'Entertainment'];
-        const expensePieChart = new Chart(document.getElementById('expensePieChart'), {
-            type: 'pie',
-            data: {
-                labels: categoryLabels,
-                datasets: [{
-                    label: 'Category Distribution',
-                    data: [0, 0, 0, 0],
-                    backgroundColor: ['#FFB74D', '#64B5F6', '#4DB6AC', '#F06292']
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-
-        // Add event listener to the finance form
-        document.getElementById('finance-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const amount = parseFloat(document.getElementById('amount').value);
-            const type = document.getElementById('type').value;
-            const category = document.getElementById('category').value;
-
-            if (!amount || amount <= 0) return alert('Please enter a valid amount.');
-
-            updateDashboard(amount, type);
-            updateChart(amount, type, category);
-            document.getElementById('finance-form').reset();
-        });
-
-        // Add event listener to the goal form
-        document.getElementById('goal-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const goalAmount = parseFloat(document.getElementById('goal').value);
-            if (!goalAmount || goalAmount <= 0) return alert('Please enter a valid goal.');
-            setGoal(goalAmount);
-            document.getElementById('goal-form').reset();
-        });
-
-        // Update dashboard values
-        function updateDashboard(amount, type) {
-            if (type === 'income') {
-                totalIncome += amount;
+            if (username === validUsername && password === validPassword) {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('dashboard-container').style.display = 'block';
+                document.getElementById('user-name').textContent = username;
             } else {
-                totalExpenses += amount;
-            }
-
-            const netBalance = totalIncome - totalExpenses;
-            document.getElementById('total-income').innerText = `₹${totalIncome}`;
-            document.getElementById('total-expense').innerText = `₹${totalExpenses}`;
-            document.getElementById('net-balance').innerText = `₹${netBalance}`;
-
-            updateGoalProgress(netBalance);
-        }
-
-        // Update goal and progress
-        function setGoal(goal) {
-            savingsGoal = goal;
-            document.getElementById('goal-progress').innerText = `Goal Progress: 0%`;
-        }
-
-        // Update goal progress
-        function updateGoalProgress(netBalance) {
-            if (savingsGoal > 0) {
-                const progress = Math.min(100, (netBalance / savingsGoal) * 100);
-                document.getElementById('goal-progress').innerText = `Goal Progress: ${progress.toFixed(2)}%`;
+                document.getElementById('login-error').style.display = 'block';
             }
         }
 
-        // Update charts
-        function updateChart(amount, type, category) {
-            // Update the income vs. expenses chart
-            incomeExpenseChart.data.datasets[0].data[0] = totalIncome; // Update Income
-            incomeExpenseChart.data.datasets[0].data[1] = totalExpenses; // Update Expenses
-            incomeExpenseChart.update();
+        let totalIncome = 0;
+let totalExpenses = 0;
+let savingsGoal = 0;
 
-            // Update the category-wise expense pie chart
-            const categoryIndex = categoryLabels.indexOf(category);
-            if (categoryIndex >= 0) {
-                expensePieChart.data.datasets[0].data[categoryIndex] += amount;
-            }
-            expensePieChart.update();
-        }
+// Initialize charts with reduced size
+const incomeExpenseChart = new Chart(document.getElementById('incomeExpenseChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Total Income', 'Total Expenses'],
+        datasets: [{
+            label: 'Amount (₹)',
+            data: [totalIncome, totalExpenses],
+            backgroundColor: ['#4CAF50', '#FF5252']
+        }]
+    },
+    options: { responsive: true, maintainAspectRatio: false }
+});
+
+const categoryLabels = ['Salary', 'Groceries', 'Rent', 'Entertainment'];
+const expensePieChart = new Chart(document.getElementById('expensePieChart'), {
+    type: 'pie',
+    data: {
+        labels: categoryLabels,
+        datasets: [{
+            label: 'Category Distribution',
+            data: [0, 0, 0, 0],
+            backgroundColor: ['#FFB74D', '#64B5F6', '#4DB6AC', '#F06292']
+        }]
+    },
+    options: { responsive: true, maintainAspectRatio: false }
+});
+
+// Add event listener to the finance form
+document.getElementById('finance-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const amount = parseFloat(document.getElementById('amount').value);
+    const type = document.getElementById('type').value;
+    const category = document.getElementById('category').value;
+
+    if (!amount || amount <= 0) return alert('Please enter a valid amount.');
+
+    updateDashboard(amount, type);
+    updateChart(amount, type, category);
+    document.getElementById('finance-form').reset();
+});
+
+// Add event listener to the goal form
+document.getElementById('goal-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const goalAmount = parseFloat(document.getElementById('goal').value);
+    if (!goalAmount || goalAmount <= 0) return alert('Please enter a valid goal.');
+    setGoal(goalAmount);
+    document.getElementById('goal-form').reset();
+});
+
+// Update dashboard values
+function updateDashboard(amount, type) {
+    if (type === 'income') {
+        totalIncome += amount;
+    } else {
+        totalExpenses += amount;
+    }
+
+    const netBalance = totalIncome - totalExpenses;
+    document.getElementById('total-income').innerText = `₹${totalIncome}`;
+    document.getElementById('total-expense').innerText = `₹${totalExpenses}`;
+    document.getElementById('net-balance').innerText = `₹${netBalance}`;
+
+    updateGoalProgress(netBalance);
+}
+
+// Update goal and progress
+function setGoal(goal) {
+    savingsGoal = goal;
+    updateGoalProgress(totalIncome - totalExpenses); // Calculate the progress immediately
+}
+
+// Update goal progress
+function updateGoalProgress(netBalance) {
+    if (savingsGoal > 0) {
+        const progress = Math.min(100, (netBalance / savingsGoal) * 100);
+        document.getElementById('goal-progress').innerText = `Goal Progress: ${progress.toFixed(2)}%`;
+    }
+}
+
+// Update charts
+function updateChart(amount, type, category) {
+    // Update the income vs. expenses chart
+    incomeExpenseChart.data.datasets[0].data[0] = totalIncome; // Update Income
+    incomeExpenseChart.data.datasets[0].data[1] = totalExpenses; // Update Expenses
+    incomeExpenseChart.update();
+
+    // Update the category-wise expense pie chart
+    const categoryIndex = categoryLabels.indexOf(category);
+    if (categoryIndex >= 0) {
+        expensePieChart.data.datasets[0].data[categoryIndex] += amount;
+    }
+    expensePieChart.update();
+}
+
         window.embeddedChatbotConfig = {
     chatbotId: "rJXBO4PXa7Rzx9Q_gA-pW",
     domain: "www.chatbase.co"
     }
     </script>
-    <script
-    src="https://www.chatbase.co/embed.min.js"
-    chatbotId="rJXBO4PXa7Rzx9Q_gA-pW"
-    domain="www.chatbase.co"
-    defer>
-    </script>
+
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="rJXBO4PXa7Rzx9Q_gA-pW"
+domain="www.chatbase.co"
+defer>
+</script>
 </body>
 </html>
